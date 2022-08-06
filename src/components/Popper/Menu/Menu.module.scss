@@ -17,11 +17,19 @@
 .menu-popper {
   padding-bottom: 8px;
 }
+.menu-body {
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  /* flex-shrink: 0; */
+  width: 100%;
+}
 
 .header {
   position: relative;
   height: 50px;
   width: 100%;
+  flex-shrink: 0;
 }
 .back-icon {
   display: block;

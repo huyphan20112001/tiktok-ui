@@ -1,14 +1,10 @@
 import classNames from 'classnames/bind';
 import styles from './Header.module.scss';
-import images from '../../../../assets/image';
-import HeadlessTippy from '@tippyjs/react/headless';
+import images from '../../../assets/image';
 import Tippy from '@tippyjs/react';
 import 'tippy.js/dist/tippy.css';
-import { useEffect, useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
-  faCircleXmark,
-  faSpinner,
   faPlus,
   faEllipsisVertical,
   faCircleQuestion,
@@ -21,13 +17,14 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 
 import { faUser } from '@fortawesome/free-regular-svg-icons';
-import { Wrapper as PopperWrapper } from '../../../Popper';
-import AccountItem from '../../../AccountItem';
-import Button from '../../../Button';
-import Upload from '../../../AccountItem/Upload';
-import Menu from '../../../Popper/Menu';
-import { InboxIcon, MessageIcon, SearchIcon } from '../../../Icon';
-import Image from '../../../Image';
+import Button from '../../../components/Button';
+import Upload from '../../../components/AccountItem/Upload';
+import Menu from '../../../components/Popper/Menu';
+import { InboxIcon, MessageIcon } from '../../../components/Icon';
+import Image from '../../../components/Image';
+import Search from '../Search';
+import { Link } from 'react-router-dom';
+import routesConfig from '../../../config/routes';
 
 const cx = classNames.bind(styles);
 
@@ -38,6 +35,86 @@ const MENU_ITEMS = [
     children: {
       title: 'Language',
       data: [
+        {
+          code: 'en',
+          title: 'English',
+        },
+        {
+          code: 'vi',
+          title: 'Tiếng Việt',
+        },
+        {
+          code: 'en',
+          title: 'English',
+        },
+        {
+          code: 'vi',
+          title: 'Tiếng Việt',
+        },
+        {
+          code: 'en',
+          title: 'English',
+        },
+        {
+          code: 'vi',
+          title: 'Tiếng Việt',
+        },
+        {
+          code: 'en',
+          title: 'English',
+        },
+        {
+          code: 'vi',
+          title: 'Tiếng Việt',
+        },
+        {
+          code: 'en',
+          title: 'English',
+        },
+        {
+          code: 'vi',
+          title: 'Tiếng Việt',
+        },
+        {
+          code: 'en',
+          title: 'English',
+        },
+        {
+          code: 'vi',
+          title: 'Tiếng Việt',
+        },
+        {
+          code: 'en',
+          title: 'English',
+        },
+        {
+          code: 'vi',
+          title: 'Tiếng Việt',
+        },
+        {
+          code: 'en',
+          title: 'English',
+        },
+        {
+          code: 'vi',
+          title: 'Tiếng Việt',
+        },
+        {
+          code: 'en',
+          title: 'English',
+        },
+        {
+          code: 'vi',
+          title: 'Tiếng Việt',
+        },
+        {
+          code: 'en',
+          title: 'English',
+        },
+        {
+          code: 'vi',
+          title: 'Tiếng Việt',
+        },
         {
           code: 'en',
           title: 'English',
@@ -86,49 +163,16 @@ const userMenu = [
 ];
 
 function Header() {
-  const [searchResult, setSearchResult] = useState([]);
   const currentUser = true;
-
-  useEffect(() => {
-    setTimeout(() => {
-      setSearchResult([1, 1]);
-    }, 0);
-  });
 
   return (
     <header className={cx('wrapper')}>
       <div className={cx('inner')}>
-        <div className={cx('logo')}>
+        <Link to={routesConfig.home} className={cx('logo')}>
           <img src={images.logo} alt="logo" />
-        </div>
+        </Link>
         <div>
-          <HeadlessTippy
-            interactive
-            visible={searchResult.length > 0}
-            render={(atrs) => (
-              <div className={cx('search-result')} tabIndex="-1" {...atrs}>
-                <PopperWrapper>
-                  <h4 className={cx('search-title')}>Accounts</h4>
-                  <AccountItem />
-                  <AccountItem />
-                  <AccountItem />
-                  <AccountItem />
-                  <AccountItem />
-                </PopperWrapper>
-              </div>
-            )}
-          >
-            <div className={cx('search')}>
-              <input placeholder="Search accounts and videos" spellCheck={false} />
-              <button className={cx('clear')}>
-                <FontAwesomeIcon icon={faCircleXmark} />
-              </button>
-              <FontAwesomeIcon className={cx('loading')} icon={faSpinner} />
-              <button className={cx('search-btn')}>
-                <SearchIcon />
-              </button>
-            </div>
-          </HeadlessTippy>
+          <Search />
         </div>
         <div className={cx('actions')}>
           <Upload>
